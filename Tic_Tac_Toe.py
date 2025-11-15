@@ -101,7 +101,7 @@ while True:
 
     # Check if user wins
     if victory_for(board, 'O'):
-        print("You won!")
+        print("You have won!")
         break
 
     # Check for tie
