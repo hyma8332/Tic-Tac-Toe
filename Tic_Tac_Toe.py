@@ -76,8 +76,6 @@ def enter_move(board):
 # -------------------------------
 def draw_move(board):
     free = make_list_of_free_fields(board)
-
-    # pick a random free square
     idx = randrange(len(free))
     row, col = free[idx]
     board[row][col] = 'X'
@@ -104,7 +102,7 @@ while True:
         print("You have won!")
         break
 
-    # Check for tie
+    # Check for tie after user move
     if len(make_list_of_free_fields(board)) == 0:
         print("It's a tie!")
         break
@@ -112,8 +110,15 @@ while True:
     # Computer move
     draw_move(board)
 
+    # Check for tie after computer move
+    if len(make_list_of_free_fields(board)) == 0:
+        display_board(board)
+        print("It's a tie!")
+        break
+
     # Check if computer wins
     if victory_for(board, 'X'):
         display_board(board)
         print("Computer wins!")
         break
+
